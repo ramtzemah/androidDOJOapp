@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.media.MediaActionSound;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.VibrationEffect;
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         setRocksInvisible(imgArray);
 
         //updateUI();
-
+        
         //setDelay(750);
 
         panel_IMG_lArrow.setOnClickListener(v -> next(true));
@@ -107,8 +108,6 @@ public class MainActivity extends AppCompatActivity {
                 if (vals[i-1][j] >= 1){
                     vals[i][j]=vals[i-1][j];
                     vals[i-1][j]=0;
-//                    vals[i-1][j]=0;
-//                    vals[i][j]=1;
                     break;
                 }
             }
@@ -150,7 +149,6 @@ public class MainActivity extends AppCompatActivity {
                 else{
                     imgArray[i][j].setVisibility(View.INVISIBLE);
                 }
-                //imgArray[i][j] = im2;
             }
         }
     }
@@ -170,12 +168,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addPoint(int i) {
+        sound();
         if (vals[4][i] == 4) {
             score +=100;
-           // panel_textView.append("score "+score);
         }else
             score+=200;
-        panel_textView.setText("score "+score);
+        panel_textView.setText("score: "+score);
+    }
+
+    private void sound() {
+        MediaActionSound sound = new MediaActionSound();
+        sound.play(MediaActionSound.STOP_VIDEO_RECORDING);
     }
 
     private void heartCount() {
@@ -259,7 +262,7 @@ public class MainActivity extends AppCompatActivity {
         panel_IMG_lView=findViewById(R.id.panel_IMG_lView);
         panel_IMG_rView=findViewById(R.id.panel_IMG_rView);
         panel_textView = findViewById(R.id.panel_textView);
-        panel_textView.setText("score "+score);
+        panel_textView.setText("score: "+score);
         panel_IMG_speed = findViewById(R.id.panel_IMG_speed);
         panel_IMG_heart1 = findViewById(R.id.panel_IMG_heart1);
         panel_IMG_heart2 = findViewById(R.id.panel_IMG_heart2);
@@ -287,5 +290,6 @@ public class MainActivity extends AppCompatActivity {
     private void stopTicker() {
         ts.cancel();
     }
+
 
 }

@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@drawable/background2">
+        android:background="@drawable/sky">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -280,6 +280,7 @@
                 android:id="@+id/panel_IMG_speed"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="20dp"
                 android:layout_weight="2"
                 app:srcCompat="@drawable/bunny"/>
 
